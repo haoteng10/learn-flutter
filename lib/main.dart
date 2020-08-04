@@ -1,60 +1,79 @@
-// import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(home: Home()));
+  runApp(MaterialApp(
+    home: NinjaCard(),
+  ));
 }
 
-class Home extends StatelessWidget {
+class NinjaCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[900],
       appBar: AppBar(
-        title: Text("Learn Flutter"),
+        title: Text("Ninja ID Card"),
         centerTitle: true,
-        backgroundColor: Colors.orange[600],
+        backgroundColor: Colors.blue[800],
+        elevation: 0.0,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
-          OneRow(),
-          Container(
-              padding: EdgeInsets.all(20),
-              color: Colors.cyan,
-              child: Text("One")),
-          Container(
-              padding: EdgeInsets.all(30),
-              color: Colors.greenAccent,
-              child: Text("Two")),
-          Container(
-              padding: EdgeInsets.all(40),
-              color: Colors.orangeAccent,
-              child: Text("Three"))
-        ],
+      body: Padding(
+        padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage("assets/profile-dog.jpg"),
+                radius: 40.0,
+              ),
+            ),
+            Divider(
+              height: 60.0,
+              color: Colors.blue[400],
+            ),
+            Text(
+              "NAME",
+              style: TextStyle(color: Colors.white, letterSpacing: 2.0),
+            ),
+            SizedBox(height: 10.0),
+            Text(
+              "ABC-Li",
+              style: TextStyle(
+                  color: Colors.orangeAccent[200],
+                  letterSpacing: 2.0,
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 10.0),
+            Text(
+              "CURRENT NINJA LEVEL",
+              style: TextStyle(color: Colors.white, letterSpacing: 2.0),
+            ),
+            SizedBox(height: 10.0),
+            Text(
+              "8",
+              style: TextStyle(
+                  color: Colors.orangeAccent[200],
+                  letterSpacing: 2.0,
+                  fontSize: 28.0,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 30.0),
+            Row(
+              children: <Widget>[
+                Icon(Icons.email, color: Colors.white),
+                SizedBox(width: 10.0),
+                Text(
+                  "ABC.Li@example.com",
+                  style: TextStyle(
+                      color: Colors.white, fontSize: 18.0, letterSpacing: 1.0),
+                )
+              ],
+            )
+          ],
+        ),
       ),
-      floatingActionButton:
-          FloatingActionButton(child: Text("Click"), onPressed: () => null),
-    );
-  }
-}
-
-class OneRow extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        Text("Hello, whoever is looking at this."),
-        FlatButton(
-            onPressed: () => null, color: Colors.amber, child: Text("Click")),
-        Container(
-            color: Colors.cyan,
-            padding: EdgeInsets.all(30),
-            child: Text("Inside"))
-      ],
     );
   }
 }
