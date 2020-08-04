@@ -15,7 +15,11 @@ class Home extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.orange[600],
       ),
-      body: Center(child: Image.asset("assets/lake.jpg")),
+      body: Container(
+          padding: EdgeInsets.fromLTRB(10.0, 20.0, 40.0, 80.0),
+          margin: EdgeInsets.all(50.0),
+          color: Colors.grey[400],
+          child: Text("Hello")),
       floatingActionButton:
           FloatingActionButton(child: Text("Click"), onPressed: () => null),
     );
