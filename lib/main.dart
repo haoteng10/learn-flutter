@@ -15,13 +15,46 @@ class Home extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.orange[600],
       ),
-      body: Container(
-          padding: EdgeInsets.fromLTRB(10.0, 20.0, 40.0, 80.0),
-          margin: EdgeInsets.all(50.0),
-          color: Colors.grey[400],
-          child: Text("Hello")),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          OneRow(),
+          Container(
+              padding: EdgeInsets.all(20),
+              color: Colors.cyan,
+              child: Text("One")),
+          Container(
+              padding: EdgeInsets.all(30),
+              color: Colors.greenAccent,
+              child: Text("Two")),
+          Container(
+              padding: EdgeInsets.all(40),
+              color: Colors.orangeAccent,
+              child: Text("Three"))
+        ],
+      ),
       floatingActionButton:
           FloatingActionButton(child: Text("Click"), onPressed: () => null),
+    );
+  }
+}
+
+class OneRow extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text("Hello, whoever is looking at this."),
+        FlatButton(
+            onPressed: () => null, color: Colors.amber, child: Text("Click")),
+        Container(
+            color: Colors.cyan,
+            padding: EdgeInsets.all(30),
+            child: Text("Inside"))
+      ],
     );
   }
 }
