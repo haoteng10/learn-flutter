@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
+import 'package:world_time_app/services/world_time.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -8,12 +7,15 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
+  String currentTime = "loading";
+
   void getData() async {
-    Response response =
-        await get("https://jsonplaceholder.typicode.com/todos/1");
-    Map data = jsonDecode(response.body);
-    print(data);
-    print(data["title"]);
+    WorldTime theTime =
+        WorldTime(location: "New York", flag: "usa.flag", short: "est");
+    await theTime.getTime();
+    setState(() {
+      currentTime = theTime.time;
+    });
   }
 
   @override
@@ -25,7 +27,12 @@ class _LoadingState extends State<Loading> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("Loading"),
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(currentTime),
+        ),
+      ),
     );
   }
 }
