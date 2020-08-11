@@ -7,14 +7,17 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
-  String currentTime = "loading";
-
   void getData() async {
+    //API Call
     WorldTime theTime =
         WorldTime(location: "New York", flag: "usa.flag", short: "est");
     await theTime.getTime();
-    setState(() {
-      currentTime = theTime.time;
+
+    //Change page view
+    Navigator.pushReplacementNamed(context, "/home", arguments: {
+      "location": theTime.location,
+      "flag": theTime.flag,
+      "time": theTime.time
     });
   }
 
@@ -29,8 +32,8 @@ class _LoadingState extends State<Loading> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(currentTime),
+          padding: EdgeInsets.all(8.0),
+          child: Text("Loading..."),
         ),
       ),
     );
